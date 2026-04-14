@@ -1,65 +1,105 @@
-import Image from "next/image";
+import Link from "next/link";
+import type { Metadata } from "next";
 
+import { AdSlot } from "@/components/ad-slot";
+import { AffiliateCard } from "@/components/affiliate-card";
+import { FaqBlock } from "@/components/faq-block";
+import { IntentLinks } from "@/components/intent-links";
+import { JsonLd } from "@/components/json-ld";
+import { buttonVariants } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { cn } from "@/lib/utils";
+import { buildFaqSchema, buildMetadata } from "@/lib/seo";
+
+export const metadata: Metadata = buildMetadata({
+  pageTopic: "Prediction Market ROI & Analytics Platform",
+  description:
+    "PredictMarkets helps users calculate ROI, evaluate expected value, and analyze prediction market trends.",
+  path: "/",
+  keywords: [
+    "polymarket ROI calculator",
+    "prediction market expected value calculator",
+    "polymarket analytics",
+    "prediction market trends",
+  ],
+});
+
+const faqItems = [
+  {
+    question: "What is a prediction market?",
+    answer:
+      "A prediction market is an exchange where participants trade on event outcomes and probabilities.",
+  },
+  {
+    question: "How do you calculate ROI in prediction markets?",
+    answer:
+      "ROI compares your net profit versus your original capital committed to the trade, including platform fees.",
+  },
+  {
+    question: "Is Polymarket profitable?",
+    answer:
+      "Profitability depends on probability edge, execution quality, fees, and risk management discipline.",
+  },
+  {
+    question: "What is expected value in trading?",
+    answer:
+      "Expected value estimates average profit or loss over many trades based on probability and payout.",
+  },
+];
+
+// This page is the SEO hub and conversion entry point for PredictMarkets.
+// It aligns calculator, informational, and data intent under one high-trust landing flow.
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+    <div className="space-y-10">
+      <JsonLd data={buildFaqSchema(faqItems)} />
+      <section className="glass-panel p-8 md:p-10">
+        <p className="mb-3 text-sm uppercase tracking-[0.2em] text-cyan-300">PredictMarkets</p>
+        <h1 className="text-4xl font-bold leading-tight tracking-[-0.02em] text-foreground md:text-6xl">
+          Prediction Market Analytics
+        </h1>
+        <p className="mt-4 max-w-3xl text-muted-foreground md:text-lg">
+          Calculate ROI, Expected Value & Analyze Market Opportunities in Real Time.
+        </p>
+        <div className="mt-6 flex flex-wrap gap-3">
+          <Link href="/roi-calculator" className={cn(buttonVariants(), "bg-blue-500 hover:bg-blue-400")}>
+            ROI Calculator
+          </Link>
+          <Link
+            href="/expected-value"
+            className={cn(buttonVariants({ variant: "secondary" }), "bg-cyan-500 text-slate-950 hover:bg-cyan-400")}
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+            Expected Value Tool
+          </Link>
+          <Link
+            href="/analytics"
+            className={cn(buttonVariants({ variant: "outline" }), "border-black bg-black text-white hover:bg-neutral-900")}
           >
-            Documentation
-          </a>
+            Market Analytics
+          </Link>
         </div>
-      </main>
+      </section>
+
+      <IntentLinks />
+      <AdSlot slotName="home-hero" />
+
+      <section className="grid gap-4 md:grid-cols-3">
+        <Card className="glass-panel border-border">
+          <CardHeader><CardTitle className="text-foreground">What are prediction markets?</CardTitle></CardHeader>
+          <CardContent className="text-muted-foreground">Markets where prices represent crowd-estimated probability of future events.</CardContent>
+        </Card>
+        <Card className="glass-panel border-border">
+          <CardHeader><CardTitle className="text-foreground">Why ROI matters</CardTitle></CardHeader>
+          <CardContent className="text-muted-foreground">ROI reveals capital efficiency and helps compare strategies across markets.</CardContent>
+        </Card>
+        <Card className="glass-panel border-border">
+          <CardHeader><CardTitle className="text-foreground">Expected value concept</CardTitle></CardHeader>
+          <CardContent className="text-muted-foreground">EV measures edge by combining your estimated probability and market payout.</CardContent>
+        </Card>
+      </section>
+
+      <AffiliateCard />
+      <FaqBlock items={faqItems} />
     </div>
   );
 }

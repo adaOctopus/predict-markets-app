@@ -1,36 +1,104 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# PredictMarkets
 
-## Getting Started
+PredictMarkets is an SEO-driven prediction market analytics and calculator SaaS engine.
 
-First, run the development server:
+Canonical tagline: **Prediction Market Analytics, ROI Tools & Trend Intelligence**  
+Metadata title convention: **PredictMarkets | {Page Topic}**
+
+## Product Goals
+
+- Rank on Google using intent-based SEO architecture.
+- Convert high-intent calculator traffic into users.
+- Prepare monetization with ads, affiliate links, and premium subscriptions.
+
+## Tech Stack
+
+- Next.js 15 App Router + TypeScript
+- Tailwind CSS + shadcn/ui
+- Framer Motion + Lucide icons
+- Supabase (tracking-ready scaffolding)
+- Stripe (premium-ready scaffolding)
+- Vercel deployment-ready
+
+## App Structure
+
+- `app/` route pages, metadata routes, and layout shell
+- `components/` reusable UI primitives and feature modules
+- `lib/polymarket/` API-ready market data abstraction
+- `lib/analytics/` derived analytics and tracking helpers
+- `lib/seo.ts` metadata + JSON-LD helpers
+
+## Route Map
+
+- `/` SEO hub + explainer + conversion CTAs
+- `/roi-calculator` prediction market ROI calculator
+- `/expected-value` expected value calculator
+- `/analytics` market trend analytics dashboard
+- `/markets/trending` trending markets dashboard
+- `/tools/strategy-simulator` strategy simulation calculator
+- `/premium` premium SaaS placeholder
+- `/learn/what-are-prediction-markets`
+- `/learn/how-roi-works-in-prediction-markets`
+- `/learn/expected-value-explained`
+- `/learn/prediction-market-strategy-guide`
+
+## Polymarket Data Layer
+
+All UI data access is routed through:
+
+- `lib/polymarket/client.ts`
+  - `fetchMarkets()`
+  - `fetchMarketById(id: string)`
+  - `fetchTrendingMarkets()`
+
+Domain and mock support:
+
+- `lib/polymarket/types.ts`
+- `lib/polymarket/mockData.ts`
+- `lib/analytics/marketAnalytics.ts` (`calculateMomentum`, `calculateEdgeScore`, `calculateVolatility`)
+
+To integrate a live API later, replace internals of `client.ts` while keeping function signatures stable.
+
+## SEO Architecture
+
+- Per-page metadata via `buildMetadata()` helper
+- FAQ JSON-LD support via `buildFaqSchema()`
+- `app/robots.ts` and `app/sitemap.ts`
+- Mandatory internal linking between ROI, EV, Analytics, and Trending pages
+
+## Environment Variables
+
+Copy `.env.example` to `.env.local`:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+cp .env.example .env.local
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Required/optional keys:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- `NEXT_PUBLIC_SITE_URL`
+- `NEXT_PUBLIC_SUPABASE_URL`
+- `NEXT_PUBLIC_SUPABASE_ANON_KEY`
+- `NEXT_PUBLIC_ADSENSE_CLIENT_ID`
+- `NEXT_PUBLIC_AFFILIATE_URL`
+- `STRIPE_SECRET_KEY`
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Development
 
-## Learn More
+```bash
+npm install
+npm run dev
+```
 
-To learn more about Next.js, take a look at the following resources:
+## Deploy (Vercel)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Import repo into Vercel
+- Set environment variables from `.env.example`
+- Build command: `npm run build`
+- Output: Next.js default
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Future Upgrades
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Replace mock market client with Polymarket GraphQL/external data source
+- Wire premium route to Stripe checkout + gated dashboards
+- Add Supabase-backed user-level analytics and event funnels

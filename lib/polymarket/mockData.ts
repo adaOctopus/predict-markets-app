@@ -1,0 +1,58 @@
+import type { Market } from "@/lib/polymarket/types";
+
+export const mockMarkets: Market[] = [
+  {
+    id: "us-election-2028-democrat",
+    question: "Will the Democratic candidate win the 2028 US election?",
+    probability: 54,
+    volume: 4_900_000,
+    liquidity: 1_200_000,
+    endDate: "2028-11-07",
+    category: "Elections",
+  },
+  {
+    id: "btc-above-100k-q4",
+    question: "Will BTC trade above $100K before Q4 ends?",
+    probability: 47,
+    volume: 6_100_000,
+    liquidity: 1_900_000,
+    endDate: "2026-12-31",
+    category: "Crypto",
+  },
+  {
+    id: "fed-rate-cut-sept",
+    question: "Will the Fed cut rates by at least 25bps in September?",
+    probability: 61,
+    volume: 3_300_000,
+    liquidity: 980_000,
+    endDate: "2026-09-30",
+    category: "Macroeconomics",
+  },
+  {
+    id: "nba-finals-east-champion",
+    question: "Will Boston win the Eastern Conference Finals this season?",
+    probability: 58,
+    volume: 2_250_000,
+    liquidity: 730_000,
+    endDate: "2026-06-21",
+    category: "Sports",
+  },
+  {
+    id: "eth-etf-net-inflows",
+    question: "Will ETH ETF net inflows exceed $5B this year?",
+    probability: 43,
+    volume: 2_900_000,
+    liquidity: 890_000,
+    endDate: "2026-12-31",
+    category: "Crypto",
+  },
+  {
+    id: "us-recession-next-12m",
+    question: "Will the US enter recession in the next 12 months?",
+    probability: 35,
+    volume: 3_900_000,
+    liquidity: 1_100_000,
+    endDate: "2027-04-14",
+    category: "Macroeconomics",
+  },
+];
