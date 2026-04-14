@@ -57,7 +57,11 @@ Domain and mock support:
 - `lib/polymarket/mockData.ts`
 - `lib/analytics/marketAnalytics.ts` (`calculateMomentum`, `calculateEdgeScore`, `calculateVolatility`)
 
-To integrate a live API later, replace internals of `client.ts` while keeping function signatures stable.
+`client.ts` now attempts live reads from the Polymarket Gamma API first, then automatically falls back to local mock data if the endpoint is blocked/unavailable.
+
+Configure endpoint override if needed:
+
+- `NEXT_PUBLIC_POLYMARKET_GAMMA_API_URL` (default: `https://gamma-api.polymarket.com`)
 
 ## SEO Architecture
 

@@ -19,7 +19,7 @@ export function IntentLinks() {
           href={link.href}
           className={cn(
             buttonVariants({ variant: "outline" }),
-            "border-black bg-black text-white hover:bg-neutral-900",
+            "border-black bg-black text-white hover:bg-gradient-to-r hover:from-blue-500 hover:to-cyan-400 hover:text-black",
           )}
         >
           {link.label}

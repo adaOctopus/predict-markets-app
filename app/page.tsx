@@ -73,7 +73,10 @@ export default function Home() {
           </Link>
           <Link
             href="/analytics"
-            className={cn(buttonVariants({ variant: "outline" }), "border-black bg-black text-white hover:bg-neutral-900")}
+            className={cn(
+              buttonVariants({ variant: "outline" }),
+              "border-black bg-black text-white hover:bg-gradient-to-r hover:from-blue-500 hover:to-cyan-400 hover:text-black",
+            )}
           >
             Market Analytics
           </Link>
