@@ -60,36 +60,48 @@ export default function Home() {
         <p className="mt-4 max-w-3xl text-muted-foreground md:text-lg">
           Calculate ROI, Expected Value & Analyze Market Opportunities in Real Time.
         </p>
-        <div className="mt-6 flex flex-wrap gap-3">
-          <Link href="/roi-calculator" className={cn(buttonVariants(), "bg-blue-500 hover:bg-blue-400")}>
+        <div className="mt-6 grid w-full grid-cols-1 gap-3 sm:flex sm:flex-wrap">
+          <Link
+            href="/roi-calculator"
+            className={cn(buttonVariants(), "w-full justify-center bg-blue-500 hover:bg-blue-400 sm:w-auto")}
+          >
             ROI Calculator
           </Link>
           <Link
             href="/expected-value"
-            className={cn(buttonVariants({ variant: "secondary" }), "bg-cyan-500 text-slate-950 hover:bg-cyan-400")}
+            className={cn(
+              buttonVariants({ variant: "secondary" }),
+              "w-full justify-center bg-cyan-500 text-slate-950 hover:bg-cyan-400 sm:w-auto",
+            )}
           >
             Expected Value Tool
           </Link>
           <Link
-            href="/analytics"
-            className={cn(
-              buttonVariants({ variant: "outline" }),
-              "border-black bg-black text-white hover:bg-gradient-to-r hover:from-blue-500 hover:to-cyan-400 hover:text-black",
-            )}
-          >
-            Market Analytics
-          </Link>
-          <Link
             href="/markets/trending"
-            className={cn(buttonVariants(), "bg-violet-500 text-white hover:bg-violet-400")}
+            className={cn(
+              buttonVariants(),
+              "w-full justify-center bg-gradient-to-r from-violet-600 to-fuchsia-600 text-white hover:from-violet-500 hover:to-fuchsia-500 sm:w-auto",
+            )}
           >
             Trending Markets
           </Link>
           <Link
             href="/tools/strategy-simulator"
-            className={cn(buttonVariants(), "bg-emerald-500 text-black hover:bg-emerald-400")}
+            className={cn(
+              buttonVariants(),
+              "w-full justify-center bg-gradient-to-r from-emerald-600 to-teal-600 text-white hover:from-emerald-500 hover:to-teal-500 sm:w-auto",
+            )}
           >
             Strategy Simulator
+          </Link>
+          <Link
+            href="/analytics"
+            className={cn(
+              buttonVariants({ variant: "outline" }),
+              "w-full justify-center border-black bg-black text-white hover:bg-gradient-to-r hover:from-blue-500 hover:to-cyan-400 hover:text-black sm:w-auto",
+            )}
+          >
+            Market Analytics
           </Link>
         </div>
       </section>
