@@ -4,7 +4,6 @@ import type { Metadata } from "next";
 import { AdSlot } from "@/components/ad-slot";
 import { AffiliateCard } from "@/components/affiliate-card";
 import { FaqBlock } from "@/components/faq-block";
-import { IntentLinks } from "@/components/intent-links";
 import { JsonLd } from "@/components/json-ld";
 import { buttonVariants } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -80,10 +79,20 @@ export default function Home() {
           >
             Market Analytics
           </Link>
+          <Link
+            href="/markets/trending"
+            className={cn(buttonVariants(), "bg-violet-500 text-white hover:bg-violet-400")}
+          >
+            Trending Markets
+          </Link>
+          <Link
+            href="/tools/strategy-simulator"
+            className={cn(buttonVariants(), "bg-emerald-500 text-black hover:bg-emerald-400")}
+          >
+            Strategy Simulator
+          </Link>
         </div>
       </section>
-
-      <IntentLinks />
       <AdSlot slotName="home-hero" />
 
       <section className="grid gap-4 md:grid-cols-3">
