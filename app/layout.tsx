@@ -33,6 +33,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning className={`${spaceGrotesk.variable} h-full antialiased`}>
+      <meta name="google-adsense-account" content="ca-pub-6224630563911589"></meta>
       <meta name="google-site-verification" content="2yJR_cmiq_s-ba05EUvHMxvGV-WwW7_Im8IcS4Z6pGw" />
       <body className="min-h-full bg-background text-foreground">
         <Script
